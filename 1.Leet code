@@ -1,0 +1,54 @@
+/*Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+You can return the answer in any order.*/
+
+ANSWER:
+* questions to be asked ->are the integers signed or unsigned?
+                        ->can we have 0 as a target
+                        ->can we have two pairs adds upto target?
+                        
+*Algorithm ---->Brute Force--->create two integers, and iteratively, check all the elements with their neighbour elements that they sums upto target number
+                           ---->will take o(mXn) 
+                           
+ *Code
+#include<stdio.h>
+int main()
+{
+    int arr[5] = {1,3,1,6,7};
+    int target,i,j;
+    printf("Enter the target:");
+    scanf("%d",&target);
+    for(i=0;i<5;i++)
+    {
+        for(j=i+1;j<=5;j++)
+        {
+            if((arr[i] < target) && (arr[j]<target))   //this is why, we asked if the numbers are unsigned, because both the numbers should definetly be
+                                                       //less than the target. if not we will mot compare at all.which decreases the time complexity
+             {
+                if( (arr[i]+arr[j] ) == target)
+                {
+                   printf("\n %d,%d adds upto target, with indices(%d,%d)",arr[i],arr[j],i,j);
+                   break;
+                }
+             
+             
+             }
+             
+        }
+        
+        
+        
+    }
+    return 0;
+    
+}
+
+
+****test cases****
+
+1.If there is no pair that adds to the target
+2.If the target is 0.
+3.If all the elements in the array are same
+4.If array contains all 0's.
